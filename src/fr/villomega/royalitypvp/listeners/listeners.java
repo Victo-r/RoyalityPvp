@@ -5,7 +5,10 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -17,6 +20,22 @@ public class listeners implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent event){
         Player p = event.getPlayer();
+        tpPlayerToSpawn(p);
+    }
+
+    @EventHandler
+    public void onRespawn(PlayerRespawnEvent event){
+        Player p = event.getPlayer();
+        tpPlayerToSpawn(p);
+    }
+
+    @EventHandler
+    public void onClick(PlayerInteractEvent event){
+
+    }
+
+    public void tpPlayerToSpawn(Player p){
+
 
         p.getInventory().clear();
         p.chat("/spawn");
